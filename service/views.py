@@ -11,9 +11,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from .models import User as UserModel
+import os
 
 
 def login_page(request):
+    print (os.getcwd())
     return render(request, 'service/login_page.html')
 
 
