@@ -128,5 +128,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 STATICFILES_DIRS = [
-    "/app/mysite/static/service"
+    # Static absolute path
 ]
