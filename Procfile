@@ -1,1 +1,1 @@
-web: gunicorn service.wsgi --log-file -
+web: python manage.py shell
