@@ -1,18 +1,19 @@
 language: python
 python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.5-dev" # 3.5 development branch
-  - "nightly" # currently points to 3.6-dev
-# command to install dependencies
-install: "pip install -r requirements.txt"
-# command to run tests
+- '2.7'
+- '3.4'
+- '3.5'
+- 3.5-dev
+- nightly
+install: pip install -r requirements.txt
 script: nosetests
 deploy:
   provider: heroku
   api_key:
-    secure: ctySmW/LlgywCmO0DwRDFpAqQHi3pH2vepPmASLjau7POoFaVJ2dIGnmIZ3afvaCRdC1vUYw6dUq5+/1nSDuUTP+Ib5tA01zrYK1KiWTVkV01RP4e04pykDyEvNuY+8mMj3vLq4gKF6EpnhsCBrlzWlCPmny8v7g4cBkrlvzADRO9rcuqpzf8dgmcG8K9K90tIdNK2KkbK7Vwcp0mWnvNv5ntWKaJ1ZQSHcHPBFr8m4+FNUdSQAMCab9M9mgoX5+hJEWWjT6gCnVUVoMjhb+RdNZMmbDwmzApny/jSEIpeuuIQ3XidrYhSkKjxOyYQ6OhvPfa8WpY7lMkeTH4gA18J+y7TuyA3WNPosJDNzqrCMw2RbUK+Q7dCRlmVoDiA5wP5gSy47n/jl94cctZUsmPZlHPddeEVy2sqjaUt+YOcf2wZ+Dlu6wOhDVgGI+ojYhwUDjybSdCKAfIsqHc4JIiyu3I5kyjdlC+s2yN0oY2/wOHV5WcMJIs1rqsRPuuPcQbnq/Be9EOUCH+C/GSRr7TwF29nHRzJJ6+MphG9Gn/XOG/OZQzpVh3yDGYbXrywbEIkbmrC8RW/wyw+BhhJljl8liJ1edzVRcLuya/nGMo9lWPx59M/um7WEWrGFTwwGBJU2Hu/fTuJQ2xJsXvYYEf19g1mjv0Ro+OMDyCjv55PI=
-  app: 'zee-service-dev'
+    secure: h+B6fvBPx2YhH+bKwYWwp3IAqgdDiXdysLuHsjHMrBwIvDxfSPY7yCi0JywMbXBzUTf9X0zOY8M5IXsQ3C+46E3vYDHviwck+QnMrxNX+pLWbEgun3r3oyjvLygoUB23L8doWoIFIttfHyywmSB5E33j0GRxmIeUB3XqFFc515P4ZD+djjbuoNx8jSsLPrcyf5mzowSd6wWVbXHIaD349d6AYQmo7VmZKK0YxUqCgnnDHb9CR+gk4QxGFsZnbQR0wX4gzDtkEXT+Ng2crKyzjwassC6WAD3u8NMys7Rg42/lzk5D4mnUThsXDRDEdLPJ3idB4pKieVeH/U/yPBdJ8dZbx6fQ8/DMWTKPM+nT7dqH+jQmStLxfDM0XrPikDZswaQhyuofqul6xI5b2ronkdMzPaoBXN/tyUEXnfHUUjEfWu/o+CpoGOQoLmmv3/5/ElqufwoAjvp5zivMaVyTrxFG3MY1XHfETOr2M/91WDF3gahoOq3AJX9WKrbBAc6PoTy8q9Rc3ap38QtfD8pAvxAr5/Jp0SHfcVZ05o5HK/17xk4gbZa5wHZDiJSxcCG/NPzpNzSubw1pfnGOP7SUHr2JLf1Ln14mfWRut3cf2rsYRgPbhw1fWgEHSXjwc7z/6LUwbKlxtRMRZfZU2pMesr0Eeys6D1qKKWkSK/3TAug=
+  app: 
+    master: zee-service-dev
+    prod: zee-service-dev
   on:
     repo: zalokhan/Django-ServiceWebApp
+
