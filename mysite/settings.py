@@ -76,21 +76,30 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-DATABASES = {}
+DATABASES = dict()
 
-if not PROD_FLAG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'MasterServiceDB',
-            'USER': 'MasterService',
-            'PASSWORD': 'MasterServiceDB',
-            'HOST': '',
-            'PORT': '',
-        }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'MasterServiceDB',
+#         'USER': 'MasterService',
+#         'PASSWORD': 'MasterServiceDB',
+#         'HOST': '',
+#         'PORT': '',
+#     }
+# }
+
+database_config = dj_database_url.config()
+DATABASES = {
+    'default': {
+        'ENGINE': database_config['ENGINE'],
+        'NAME': database_config['NAME'],
+        'USER': database_config['USER'],
+        'PASSWORD': database_config['PASSWORD'],
+        'HOST': database_config['HOST'],
+        'PORT': database_config['PORT'],
     }
-else:
-    DATABASES['default'] = dj_database_url.config()
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

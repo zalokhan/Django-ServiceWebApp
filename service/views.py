@@ -15,7 +15,7 @@ import dj_database_url
 
 
 def login_page(request):
-    print (dj_database_url.config())
+    # print (dj_database_url.config())
     return render(request, 'service/login_page.html')
 
 
