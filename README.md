@@ -1,4 +1,8 @@
 # Django-ServiceWebApp
 
-Master :  [![Build Status](https://travis-ci.org/zalokhan/Django-ServiceWebApp.svg?branch=master)](https://travis-ci.org/zalokhan/Django-ServiceWebApp.svg?branch=master)
-Dev    :  [![Build Status](https://travis-ci.org/zalokhan/Django-ServiceWebApp.svg?branch=dev)](https://travis-ci.org/zalokhan/Django-ServiceWebApp.svg?branch=dev)
+[![Build Status](https://travis-ci.org/zalokhan/Django-ServiceWebApp.svg?branch=master)](https://travis-ci.org/zalokhan/Django-ServiceWebApp.svg?branch=master)
+
+
+Link to deployed web service is [here](https://zee-service-dev.herokuapp.com/)
+
+Travis build history [https://travis-ci.org/zalokhan/Django-ServiceWebApp](https://travis-ci.org/zalokhan/Django-ServiceWebApp)
