@@ -76,30 +76,31 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-DATABASES = dict()
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'MasterServiceDB',
-#         'USER': 'MasterService',
-#         'PASSWORD': 'MasterServiceDB',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-# }
-
-database_config = dj_database_url.config()
 DATABASES = {
     'default': {
-        'ENGINE': database_config['ENGINE'],
-        'NAME': database_config['NAME'],
-        'USER': database_config['USER'],
-        'PASSWORD': database_config['PASSWORD'],
-        'HOST': database_config['HOST'],
-        'PORT': database_config['PORT'],
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'MasterServiceDB',
+        'USER': 'MasterService',
+        'PASSWORD': 'MasterServiceDB',
+        'HOST': '',
+        'PORT': '',
     }
 }
+
+database_config = dj_database_url.config()
+
+if database_config:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': database_config.get('NAME'),
+            'USER': database_config.get('USER'),
+            'PASSWORD': database_config.get('PASSWORD'),
+            'HOST': database_config.get('HOST'),
+            'PORT': database_config.get('PORT'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
