@@ -1,33 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% extends "service/skeleton.html" %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'service/bootstrap/css/bootstrap.min.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'service/signin.css' %}"/>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Log in</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-</head>
-<body>
-<div class="container">
-    {{ state }}
-    <form action="{% url 'service:login' %}" method="post" class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        {% csrf_token %}
-        <label for="inputUserID" class="sr-only">User ID</label>
-        <input type="text" name="user_id" value="{{ user_id}}" class="form-control" placeholder="User ID" required
-               autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" value="{{ password}}" class="form-control" placeholder="Password"
-               required
-               autofocus>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-    <br/>
-    <h4 class="form-signin-heading form-signin">New Users register here !</h4>
-    <a href="{% url 'service:register' %}">
-        <button class="btn btn-lg btn-primary btn-block form-signin">Sign up</button>
-    </a>
+{% block pre_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/cover_image.css' %}"/>
+{% endblock %}
+
+{% block body %}
+<div class="cover_image cover_outer">
+    <div class="container">
+        {{ state }}
+        <form action="{% url 'service:login' %}" method="post" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            {% csrf_token %}
+            <label for="inputUserID" class="sr-only">User ID</label>
+            <input type="text" name="user_id" value="{{ user_id}}" class="form-control" placeholder="User ID" required
+                   autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" value="{{ password}}" class="form-control" placeholder="Password"
+                   required
+                   autofocus>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+        <br/>
+        <h4 class="form-signin form-signin-heading">New Users register here !</h4>
+        <a href="{% url 'service:register' %}">
+            <button class="btn btn-lg btn-primary btn-block form-signin">Sign up</button>
+        </a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript"> call_alert("{{alert_message}}", "{{alert_type}}") </script>
+{% endblock %}

@@ -1,55 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+{% extends "service/skeleton.html" %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'service/bootstrap/css/bootstrap.min.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'service/signin.css' %}"/>
+{% block pre_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/cover_image.css' %}"/>
+{% endblock %}
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Register New User</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-</head>
-
-<body>
-<div class="container">
-    {{ state }}
-    <form action="{% url 'service:register_check' %}" method="post" class="form-signin">
-        {% csrf_token %}
-        <h2 class="form-signin-heading">Register New User</h2>
-        <label for="inputUserID" class="sr-only">User ID</label>
-        <input type="text" name="user_id" value="{{ user_id}}" class="form-control" placeholder="User ID" required
-               autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" value="{{ password}}" class="form-control" placeholder="Password"
-               required autofocus>
-        <label for="inputRePassword" class="sr-only">Re-enter Password</label>
-        <input type="password" name="repassword" value="{{ repassword}}" class="form-control"
-               placeholder="Re-enter Password"
-               required autofocus>
-        <label for="inputFirstName" class="sr-only">First Name</label>
-        <input type="text" name="user_first_name" value="{{ user_first_name}}" class="form-control"
-               placeholder="First Name" required
-               autofocus>
-        <label for="inputLastName" class="sr-only">Last Name</label>
-        <input type="text" name="user_last_name" value="{{ user_last_name}}" class="form-control"
-               placeholder="Last Name" required
-               autofocus>
-        <label for="inputEmail" class="sr-only">Email Address</label>
-        <input type="email" name="user_email" value="{{ user_email}}" class="form-control" placeholder="Email address"
-               required autofocus>
-        <label for="inputPhone" class="sr-only">Phone Number</label>
-        <input type="text" name="user_phone" value="{{ user_phone}}" class="form-control"
-               placeholder="Phone Number" required
-               autofocus>
-        <label for="inputDOB" class="sr-only">Date of Birth</label>
-        <input type="text" name="user_dob" value="{{ user_dob}}" class="form-control"
-               placeholder="Date of Birth (mm/dd/yyyy)" required
-               autofocus>
-        <br/><br/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    </form>
+{% block body %}
+<div class="cover_image cover_outer">
+    <div class="container">
+        {{ state }}
+        <form action="{% url 'service:register_check' %}" method="post" class="form-signin">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Register New User</h2>
+            <label for="inputUserID" class="sr-only">User ID</label>
+            <input type="text" name="user_id" value="{{ user_id}}" class="form-control" placeholder="User ID" required
+                   autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" value="{{ password}}" class="form-control" placeholder="Password"
+                   required autofocus>
+            <label for="inputRePassword" class="sr-only">Re-enter Password</label>
+            <input type="password" name="repassword" value="{{ repassword}}" class="form-control"
+                   placeholder="Re-enter Password"
+                   required autofocus>
+            <label for="inputFirstName" class="sr-only">First Name</label>
+            <input type="text" name="user_first_name" value="{{ user_first_name}}" class="form-control"
+                   placeholder="First Name" required
+                   autofocus>
+            <label for="inputLastName" class="sr-only">Last Name</label>
+            <input type="text" name="user_last_name" value="{{ user_last_name}}" class="form-control"
+                   placeholder="Last Name" required
+                   autofocus>
+            <label for="inputEmail" class="sr-only">Email Address</label>
+            <input type="email" name="user_email" value="{{ user_email}}" class="form-control" placeholder="Email address"
+                   required autofocus>
+            <label for="inputPhone" class="sr-only">Phone Number</label>
+            <input type="text" name="user_phone" value="{{ user_phone}}" class="form-control"
+                   placeholder="Phone Number" required
+                   autofocus>
+            <label for="inputDOB" class="sr-only">Date of Birth</label>
+            <input type="text" name="user_dob" value="{{ user_dob}}" class="form-control"
+                   placeholder="Date of Birth (mm/dd/yyyy)" required
+                   autofocus>
+            <br/><br/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        </form>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript"> call_alert("{{alert_message}}", "{{alert_type}}") </script>
+{% endblock %}
