@@ -8,7 +8,7 @@ python:
 - nightly
 
 before_install:
-  - export DJANGO_SETTINGS_MODULE=service.settings
+  - export DJANGO_SETTINGS_MODULE=mysite.settings
 
 install: 
   - pip install -r requirements.txt
