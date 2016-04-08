@@ -14,7 +14,7 @@ services:
 before_script:
   - psql -c 'create database MasterServiceDB;' -U postgres
   - psql -c "create user MasterService with password 'MasterServiceDB';" -U postgres
-  - psql -c 'grant all privileges on database MasterServiceDB to MasterService;'
+  - psql -c 'grant all privileges on database MasterServiceDB to MasterService;' -U postgres
 
 script: python manage.py test service.tests
 
