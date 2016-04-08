@@ -65,4 +65,4 @@ def register_check_arena(request):
     alert_type = "success"
     request.session['alert_message'] = message
     request.session['alert_type'] = alert_type
-    return HttpResponseRedirect(reverse('service:login_page'))
+    return HttpResponseRedirect(reverse('service:main_home'))

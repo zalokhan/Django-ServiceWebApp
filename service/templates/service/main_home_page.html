@@ -1,0 +1,49 @@
+{% extends "service/skeleton.html" %}
+{% load static %}
+
+{% block pre_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/cover_image.css' %}"/>
+{% endblock %}
+
+{% block navbar %}
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false">Sign in <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>
+                {{ state }}
+                <form action="{% url 'service:login' %}" method="post" class="form-signin">
+                    {% csrf_token %}
+                    <div style="padding:2px 0px 2px 0px">
+                        <label for="inputUserID" class="sr-only">User ID</label>
+                        <input type="text" name="user_id" value="{{ user_id}}" class="form-control"
+                               placeholder="User ID"
+                               required
+                               autofocus>
+                    </div>
+                    <div style="padding:2px 0px 2px 0px">
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" name="password" value="{{ password}}" class="form-control"
+                               placeholder="Password"
+                               required
+                               autofocus>
+                    </div>
+                    <button class="button_dropdown" type="submit">Sign in</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+    <li><a href="{% url 'service:register' %}">Sign up</a></li>
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="cover_image cover_outer">
+    <h2 class="form-signin"> Welcome ! </h2>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript"> call_alert("{{alert_message}}", "{{alert_type}}") </script>
+{% endblock %}

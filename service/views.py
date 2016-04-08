@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import login_required
 
-from arena.login_arena import *
+from arena.main_home_arena import *
 from arena.register_arena import *
 from arena.myhome_arena import *
 
 
-def login_page(request):
-    return login_page_arena(request)
+def main_home(request):
+    return main_home_arena(request)
 
 
 def login(request):
