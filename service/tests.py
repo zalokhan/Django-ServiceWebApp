@@ -1,3 +1,8 @@
 from django.test import TestCase
 
-# Create your tests here.
+print ("HELLO")
+
+
+class MainHomeArenaTest(TestCase):
+    def test_main_home_arena_view(self):
+        self.assertEqual(True, True)
