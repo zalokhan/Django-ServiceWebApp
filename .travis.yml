@@ -12,6 +12,7 @@ before_install:
 
 install: 
   - pip install -r requirements.txt
+  - pip install coveralls
 
 services:
   - postgresql
@@ -19,7 +20,12 @@ services:
 before_script:
   - psql -c "CREATE DATABASE travisdb;" -U postgres
 
-script: python manage.py test service.tests
+script:
+  - python manage.py test service.tests
+  - coverage run --source=service setup.py test
+
+after_success:
+  - coveralls
 
 deploy:
   provider: heroku
