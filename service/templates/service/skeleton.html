@@ -1,9 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'service/bootstrap/css/bootstrap.min.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/fonts.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/signin.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/alert.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/animate.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'service/stylesheets/footer_style.css' %}"/>
 {% block pre_head %}{% endblock %}
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -15,7 +17,7 @@
 
 <body>
 
-<nav class="navbar-inverse">
+<nav class="navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -35,6 +37,23 @@
 </nav>
 
 {% block body %}{% endblock %}
+
+<div class="footer-background">
+    <footer id="footer-container" class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h5>Contact</h5>
+            </div>
+            <div class="col-sm-3">
+                <h5>Company</h5>
+            </div>
+            <div class="col-sm-3">
+                <h5>Feedback</h5>
+            </div>
+            {% block footer %}{% endblock %}
+        </div>
+    </footer>
+</div>
 
 <script src="{% static 'service/bootstrap/js/jquery-1.12.3.js' %}"></script>
 <script src="{% static 'service/bootstrap/js/bootstrap.min.js' %}"></script>
