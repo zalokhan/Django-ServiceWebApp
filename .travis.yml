@@ -22,7 +22,7 @@ before_script:
 
 script:
   - python manage.py test service.tests
-  - coverage run --source=service setup.py test
+  - coverage run --source=service manage.py test
 
 after_success:
   - coveralls
