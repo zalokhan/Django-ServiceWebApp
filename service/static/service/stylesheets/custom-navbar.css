@@ -1,0 +1,64 @@
+@media screen and (min-width: 768px)
+.k {
+    padding: 100px 0;
+}
+.k {
+    position: relative;
+    width: 100%;
+    padding: 100px 0px;
+    color: inherit;
+    background-color: #ffffff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.apb {
+    display: table;
+    width: 100%;
+    height: 110vh;
+}
+.al {
+    color: #ffffff;
+    background-color: #000000;
+}
+.app-navbar {
+    font-weight: 500;
+    letter-spacing: .05em;
+    position: absolute;
+}
+.apr {
+    background-color: transparent;
+    border-color: transparent;
+}
+.and {
+    padding-top: 30px !important;
+}
+@media (min-width: 768px)
+.tu {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.px {
+    top: 0;
+    border-width: 0 0 1px;
+}
+@media (min-width: 768px)
+.px, .pj {
+    border-radius: 0;
+}
+.px, .pj {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+@media (min-width: 768px)
+.dt {
+    border-radius: 4px;
+}
+.dt {
+    position: absolute;
+    min-height: 50px;
+    margin-bottom: 21px;
+    border: 1px solid transparent;
+}
