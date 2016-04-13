@@ -21,6 +21,5 @@ def register_check(request):
     return register_check_arena(request)
 
 
-@login_required
 def my_home(request):
     return my_home_main_arena(request)

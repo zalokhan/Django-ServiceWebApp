@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body %}
+
 <div class="k al apb aqx cover_image">
     <nav class="dt apr px tu app-navbar and">
         <div class="container-fluid">
@@ -58,22 +59,16 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-    <h2 class="form-signin"> Welcome Home ! </h2>
+
+    <h2 class="papyrus-h1" align="center"> Welcome ! </h2>
+
 </div>
 
+<div class="cover-page">
+    What do we do ?
+</div>
 {% endblock %}
 
 {% block script %}
 <script type="text/javascript"> call_alert("{{alert_message}}", "{{alert_type}}") </script>
-<script type="text/javascript">
-    $(function(){
-    $('#nav').hover(function(){
-        $(this).animate({width:'200px'},500);
-    },function(){
-        $(this).animate({width:'35px'},500);
-    }).trigger('mouseleave');
-});
-
-
-</script>
 {% endblock %}
