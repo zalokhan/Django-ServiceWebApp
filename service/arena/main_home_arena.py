@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
 
 
 def main_home_arena(request):
@@ -37,3 +38,8 @@ def login_check_arena(request):
         request.session['alert_message'] = message
         request.session['alert_type'] = alert_type
         return HttpResponseRedirect(reverse('service:main_home', ))
+
+
+def logout_arena(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('service:main_home', ))

@@ -13,6 +13,10 @@ def login(request):
     return login_check_arena(request)
 
 
+def logout(request):
+    return logout_arena(request)
+
+
 def register(request):
     return register_arena(request)
 
