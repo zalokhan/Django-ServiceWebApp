@@ -17,13 +17,49 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+
+def get_env_variable(var_name, default=False):
+    """
+    Get the environment variable or return exception
+    :param var_name: Environment Variable to lookup
+    """
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        import StringIO
+        import ConfigParser
+        env_file = os.environ.get('PROJECT_ENV_FILE', PROJECT_ROOT + "/.env")
+        try:
+            config = StringIO.StringIO()
+            config.write("[DATA]\n")
+            config.write(open(env_file).read())
+            config.seek(0, os.SEEK_SET)
+            cp = ConfigParser.ConfigParser()
+            cp.readfp(config)
+            value = dict(cp.items('DATA'))[var_name.lower()]
+            if value.startswith('"') and value.endswith('"'):
+                value = value[1:-1]
+            elif value.startswith("'") and value.endswith("'"):
+                value = value[1:-1]
+            os.environ.setdefault(var_name, value)
+            return value
+        except (KeyError, IOError):
+            if default is not False:
+                return default
+            from django.core.exceptions import ImproperlyConfigured
+            error_msg = "Either set the env variable '{var}' or place it in your " \
+                        "{env_file} file as '{var} = VALUE'"
+            raise ImproperlyConfigured(error_msg.format(var=var_name, env_file=env_file))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
+
+SECRET_KEY = get_env_variable('SECRET_KEY')
+SOCIAL_AUTH_FACEBOOK_KEY = get_env_variable('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = get_env_variable('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

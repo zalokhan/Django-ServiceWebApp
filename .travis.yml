@@ -1,32 +1,26 @@
 language: python
-
 python:
 - '2.7'
 - '3.4'
 - '3.5'
 - 3.5-dev
 - nightly
-
 before_install:
-  - export DJANGO_SETTINGS_MODULE=mysite.settings
-
-install: 
-  - pip install -r requirements.txt
-  - pip install coveralls
-
+- export DJANGO_SETTINGS_MODULE=mysite.settings
+install:
+- pip install -r requirements.txt
+- pip install coveralls
 services:
-  - postgresql
-
+- postgresql
+env:
+  secure: "gdNfobpzB3SLF6T6cSNERStq3oApN4r12/2+1XLQKnvVHBsL8giSqEgPZVcnzE5FEZR+qbGFSTksu+KP1WqQzuHAGRdTtTE/8H1LDHeIhjt1rzZG1dq/O58F7wqYRU6EE2MSw5O02Q0mCf/+FeYOd5+s7ufumnCKJ7aauABF0YjK4mM6AyoZoc0ixJX251KHLsx36X49X33MXxZNp9wIKCxvuhgnDowQ5drQgwlYEtP0KilTqHw5Ht+3FFwv3gXIRWH/1iFpJUrBI4jPCABHaA9wi2FFXL7spZYxqhg/9whCrQOlu6vJUETXPj5tj18SELPPIHuEv0kfP5A9UuwrVrx79xIh+N+RAHTEsK6WK4ydWUSpp9eqKE0fShAwsrugYuYJxm5feIBzaTokI+XvG023n7qEvQ+6WHg5G47DCDBS/ZCXjpx4xlWxY4DY9yqgfsehoMPrBu1QNpRQbrCRqfuPTxsXw1qZVYfg4v5zHJDBqOe+3wQ/M6pmJE7/CGXawaNQreTr1xK+5pTveBfQ63kp8LhfqonSjePjBEbYav7g7OhQ+Ujg8fGbN5HGyPmAGTUGviY7ZTh4uHuOvMKAV/iLrpuqw8bqg45MDE3XlwZVFZHNX0KHhxfCKK0BcNBrGfR/IfWBbwCSq5eQgF//+1+2MvXpW1cXVs1Y4IIGI/0="
 before_script:
-  - psql -c "CREATE DATABASE travisdb;" -U postgres
-
+- psql -c "CREATE DATABASE travisdb;" -U postgres
 script:
-  - python manage.py test service.tests
-  - coverage run --source=service manage.py test
-
+- python manage.py test service.tests
+- coverage run --source=service manage.py test
 after_success:
-  - coveralls
-
+- coveralls
 deploy:
   provider: heroku
   api_key:
@@ -34,4 +28,3 @@ deploy:
   app: zee-service-dev
   on:
     repo: zalokhan/Django-ServiceWebApp
-
