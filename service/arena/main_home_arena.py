@@ -14,7 +14,13 @@ def main_home_arena(request):
     if 'alert_message' in request.session:
         del request.session['alert_message']
         del request.session['alert_type']
-    return render(request, 'service/main_home_page.html', {'alert_message': alert_message, 'alert_type': alert_type})
+    context = {
+        'request': request,
+        'user': request.user,
+        'alert_message': alert_message,
+        'alert_type': alert_type
+    }
+    return render(request, 'service/main_home_page.html', context)
 
 
 def login_check_arena(request):

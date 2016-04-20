@@ -20,9 +20,13 @@ from django.conf import settings
 urlpatterns = [
     url(r'^', include('service.urls')),
     url(r'^admin/', admin.site.urls),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 ]
 
 # if not settings.DEBUG:
 urlpatterns += patterns('',
-                        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+                        (
+                            r'^static/(?P<path>.*)$', 'django.views.static.serve',
+                            {'document_root': settings.STATIC_ROOT}),
                         )

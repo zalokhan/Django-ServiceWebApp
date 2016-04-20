@@ -19,9 +19,12 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
+print('Hello world================================================================================================')
+print (os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wme%u@d*vp4brgr=#n=y4j(q7du=veqv$37_q%&j9ep+5juphc'
+os.environ['DJANGO_SECRET_KEY'] = 'wme%u@d*vp4brgr=#n=y4j(q7r#l&i@dz!&j408$c9%sz(p=i&'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +41,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
 ]
+
+# For Social app authentication
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -102,12 +128,12 @@ if database_config:
 if 'TRAVIS' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE':   'django.db.backends.postgresql_psycopg2',
-            'NAME':     'travisdb',
-            'USER':     'postgres',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'travisdb',
+            'USER': 'postgres',
             'PASSWORD': '',
-            'HOST':     'localhost',
-            'PORT':     '',
+            'HOST': 'localhost',
+            'PORT': '',
         }
     }
 

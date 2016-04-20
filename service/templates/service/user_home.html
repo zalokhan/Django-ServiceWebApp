@@ -103,6 +103,8 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-8">
+
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i> Cart Item updates
@@ -123,6 +125,8 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div id="morris-area-chart"></div>
+                    {% load tz %}
+                    {% get_current_timezone as TIME_ZONE %}
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -259,7 +263,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <ul class="chat">
-                        
+
                     </ul>
                 </div>
                 <!-- /.panel-body -->

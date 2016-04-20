@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'service'
 urlpatterns = [
+
     # Home page
     url(r'^$', views.main_home, name='main_home'),
     # Login authentication
