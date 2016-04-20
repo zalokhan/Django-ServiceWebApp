@@ -12,8 +12,6 @@ install:
 - pip install coveralls
 services:
 - postgresql
-env:
-  secure: "gdNfobpzB3SLF6T6cSNERStq3oApN4r12/2+1XLQKnvVHBsL8giSqEgPZVcnzE5FEZR+qbGFSTksu+KP1WqQzuHAGRdTtTE/8H1LDHeIhjt1rzZG1dq/O58F7wqYRU6EE2MSw5O02Q0mCf/+FeYOd5+s7ufumnCKJ7aauABF0YjK4mM6AyoZoc0ixJX251KHLsx36X49X33MXxZNp9wIKCxvuhgnDowQ5drQgwlYEtP0KilTqHw5Ht+3FFwv3gXIRWH/1iFpJUrBI4jPCABHaA9wi2FFXL7spZYxqhg/9whCrQOlu6vJUETXPj5tj18SELPPIHuEv0kfP5A9UuwrVrx79xIh+N+RAHTEsK6WK4ydWUSpp9eqKE0fShAwsrugYuYJxm5feIBzaTokI+XvG023n7qEvQ+6WHg5G47DCDBS/ZCXjpx4xlWxY4DY9yqgfsehoMPrBu1QNpRQbrCRqfuPTxsXw1qZVYfg4v5zHJDBqOe+3wQ/M6pmJE7/CGXawaNQreTr1xK+5pTveBfQ63kp8LhfqonSjePjBEbYav7g7OhQ+Ujg8fGbN5HGyPmAGTUGviY7ZTh4uHuOvMKAV/iLrpuqw8bqg45MDE3XlwZVFZHNX0KHhxfCKK0BcNBrGfR/IfWBbwCSq5eQgF//+1+2MvXpW1cXVs1Y4IIGI/0="
 before_script:
 - psql -c "CREATE DATABASE travisdb;" -U postgres
 script:
@@ -28,3 +26,6 @@ deploy:
   app: zee-service-dev
   on:
     repo: zalokhan/Django-ServiceWebApp
+env:
+  global:
+    secure: fNabmkOvsG3cGmhJeRV2x6GEWydyK+jDHpkxD/IRLZ+0zDODtSBGPCRIVodTCo9/x3lM9LzIs2jFhcUqofzdv2adxf9EjcxqCUBz3HQTYsUpM8QD/NAZ51y7iuC65xFT+y9jp+cUtcsAGKHxca1zn99wTD52uRwIJ+23BHl3kv80m7nJGmNh1aj+9Trlf6eKh6KFSR52JaOSnM8xFpkdFSTPrZgp1vy9YvtTaqx6DGngmuyixBbAERvIQ8p4rADaR6/XLBMfVLCg7cWPeKliJax48epxIVAffB0lala4WirvlQVKxh7ITcDGU//y+ahRNQgadE5g+I1zg+GcCvrwdxd3sd6qfKxbOqFUZJ61jCCXxjoNRM9RoprnSOtF0f5WuDko0bCNquF54nj3jqMRIZe/9Vvi9BvtaUe4EsXWe+dOizATH4YU8tkN+Y7v/Y/WIxXLyNgu7pYV9RYx8lYOqRrGKdE2SlTUasMX4CWi3Hn2W2qUQjU6bFxZMIHTYrD+upj0r3yvGe2hvlXHRyWw5p7FO7wMOzd9oBNomEvrAcIfSBNmJ1EwHF6XjzQMZIsV+aeGY2JLd7WbIDi19bV8g/TBzkARGHmLcb/HJj42Z+P047RiqiRywsKkt5clJ5r2MVkRbJwTZgTanD4XmmHsKQ9b+dHYdWflkYz5RPme51U=
