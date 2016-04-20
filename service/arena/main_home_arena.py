@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
-import os
+
 
 def main_home_arena(request):
     alert_message = request.session.get('alert_message', None)
@@ -21,7 +21,6 @@ def main_home_arena(request):
         'alert_type': alert_type
     }
 
-    print (os.environ)
     return render(request, 'service/main_home_page.html', context)
 
 

@@ -19,12 +19,11 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
-print('Hello world================================================================================================')
-print (os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-os.environ['DJANGO_SECRET_KEY'] = 'wme%u@d*vp4brgr=#n=y4j(q7r#l&i@dz!&j408$c9%sz(p=i&'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
