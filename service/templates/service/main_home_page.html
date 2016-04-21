@@ -294,6 +294,24 @@
             </div>
         </div>
     </div>
+    
+    <div class="container" style="padding-top: 30px">
+        <div class="row" style="text-align: center; padding-left: 275px; padding-right: 275px">
+            <div class="col-sm-6 text-center button-div">
+                <a href="{% url 'social:begin' 'facebook' %}?next={% url 'service:my_home' %}">
+                    <a class="btn btn-block btn-social btn-facebook"><i
+                            class="fa fa-facebook"></i> Sign in with Facebook</a>
+                </a>
+            </div>
+            <div class="col-sm-6 text-center button-div">
+                <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'service:my_home' %}"
+                   class="btn btn-block btn-social btn-google-plus">
+                    <i class="fa fa-google-plus"></i> Sign in with Google
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="container" style="padding-top: 30px">
         <div class="row">
             <div class="col-lg-12" style="text-align:center;">
@@ -313,22 +331,6 @@
         </div>
     </div>
 
-    <div class="container" style="padding-top: 30px">
-        <div class="row" style="text-align: center; padding-left: 275px; padding-right: 275px">
-            <div class="col-sm-6 text-center button-div">
-                <a href="{% url 'social:begin' 'facebook' %}?next={% url 'service:my_home' %}">
-                    <a class="btn btn-block btn-social btn-facebook"><i
-                            class="fa fa-facebook"></i> Sign in with Facebook</a>
-                </a>
-            </div>
-            <div class="col-sm-6 text-center button-div">
-                <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'service:my_home' %}"
-                   class="btn btn-block btn-social btn-google-plus">
-                    <i class="fa fa-google-plus"></i> Sign in with Google
-                </a>
-            </div>
-        </div>
-    </div>
     {% if user and not user.is_anonymous %}
     {% else %}
     {% endif %}
