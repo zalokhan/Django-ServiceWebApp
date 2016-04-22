@@ -8,14 +8,26 @@ from django.contrib.auth.models import User
 
 from service.models import User as UserModel
 
+"""
+Register
+Returns page when user clicks the register button
+or redirected from invalid registration
+"""
+
 
 def register_arena(request):
-    alert_message = request.session.get('alert_message', None)
-    alert_type = request.session.get('alert_type', None)
+    alert_message = request.session.get('alert_message')
+    alert_type = request.session.get('alert_type')
     if 'alert_message' in request.session:
         del request.session['alert_message']
         del request.session['alert_type']
     return render(request, 'service/register.html', {'alert_message': alert_message, 'alert_type': alert_type})
+
+
+"""
+Register validation
+Validates the input by the user and checks for duplicates or invalid inputs.
+"""
 
 
 def register_check_arena(request):
