@@ -1,6 +1,6 @@
 from arena.main_home_arena import main_home_arena, login_check_arena, logout_arena
 from arena.register_arena import register_arena, register_check_arena
-from arena.myhome_arena import my_home_main_arena
+from arena.user_home_arena import user_home_main_arena
 
 """
 Main Home Page
@@ -58,5 +58,5 @@ User Dashboard and home landing page
 """
 
 
-def my_home(request):
-    return my_home_main_arena(request)
+def user_home(request):
+    return user_home_main_arena(request)

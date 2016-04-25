@@ -15,5 +15,5 @@ urlpatterns = [
     # Register successful
     url(r'^register/check/$', views.register_check, name='register_check'),
     # User Home page
-    url(r'^home/$', views.my_home, name='my_home'),
+    url(r'^home/$', views.user_home, name='user_home'),
 ]

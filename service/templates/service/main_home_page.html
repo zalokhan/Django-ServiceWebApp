@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Gift a Book</title>
+    <title>Book Turks</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'service/bootstrap/css/bootstrap.min.css' %}"/>
@@ -80,7 +80,7 @@
                 </li>
                 {% if user and not user.is_anonymous %}
                 <li>
-                    <a class="page-scroll" href="{% url 'service:my_home' %}">
+                    <a class="page-scroll" href="{% url 'service:user_home' %}">
                         {{ user.get_full_name|default:user.username}}</a>
                 </li>
                 <li>
@@ -99,7 +99,7 @@
 <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <h1>GIFT A BOOK</h1>
+            <h1>BOOK TURKS</h1>
             <hr>
             <p>Choose a book to send to your friend today !!!</p>
             <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
@@ -125,7 +125,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">At Your Service</h2>
+                <h2 class="section-heading">What can you do here ?</h2>
                 <hr class="primary">
             </div>
         </div>
@@ -134,30 +134,30 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-                    <h3>Variety</h3>
-                    <p class="text-muted">Choose from Amazon's latest book collections.</p>
+                    <i class="fa fa-4x fa-trophy wow bounceIn text-primary"></i>
+                    <h3>Quiz</h3>
+                    <p class="text-muted">Compete with your friends in various quizzes.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                    <h3>Any time</h3>
-                    <p class="text-muted">We are working 24x7 for you!</p>
+                    <i class="fa fa-4x fa-group wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                    <h3>Discuss</h3>
+                    <p class="text-muted">Discuss your favorites with your buddies</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                    <h3>Quick delivery</h3>
-                    <p class="text-muted">We deliver your books before you know it.</p>
+                    <i class="fa fa-4x fa-globe wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                    <h3>Group meetups</h3>
+                    <p class="text-muted">Plan a group reading or join an existing one.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                    <h3>Customized greetings</h3>
-                    <p class="text-muted">You can also send a customized greeting card with your delivery!</p>
+                    <i class="fa fa-4x fa-book bounceIn text-primary" data-wow-delay=".3s"></i>
+                    <h3>Write a story</h3>
+                    <p class="text-muted">Write a story you have always wanted to write or complete one from the list.</p>
                 </div>
             </div>
         </div>
@@ -313,13 +313,13 @@
         <div class="container" style="padding-top: 30px">
             <div class="row" style="text-align: center; padding-left: 28%; padding-right: 28%">
                 <div class="col-sm-6 text-center button-div">
-                    <a href="{% url 'social:begin' 'facebook' %}?next={% url 'service:my_home' %}"
+                    <a href="{% url 'social:begin' 'facebook' %}?next={% url 'service:user_home' %}"
                        class="btn btn-block btn-social btn-facebook" style="border-radius: 4px;"><i
                             class="fa fa-facebook"></i> Sign in with Facebook
                     </a>
                 </div>
                 <div class="col-sm-6 text-center button-div">
-                    <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'service:my_home' %}"
+                    <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'service:user_home' %}"
                        class="btn btn-block btn-social btn-google-plus" style="border-radius: 4px;">
                         <i class="fa fa-google-plus"></i> Sign in with Google
                     </a>

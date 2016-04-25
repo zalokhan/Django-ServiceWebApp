@@ -9,7 +9,7 @@ If not authenticated redirects back to main page
 """
 
 
-def my_home_main_arena(request):
+def user_home_main_arena(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('service:main_home'))
     return render(request, 'service/user_home.html')
