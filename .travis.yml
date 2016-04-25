@@ -5,20 +5,27 @@ python:
 - '3.5'
 - 3.5-dev
 - nightly
+
 before_install:
 - export DJANGO_SETTINGS_MODULE=mysite.settings
+
 install:
 - pip install -r requirements.txt
 - pip install coveralls
+
 services:
 - postgresql
+
 before_script:
 - psql -c "CREATE DATABASE travisdb;" -U postgres
+
 script:
 - python manage.py test service.tests
 - coverage run --source=service manage.py test
+
 after_success:
 - coveralls
+
 deploy:
   provider: heroku
   api_key:
@@ -26,6 +33,7 @@ deploy:
   app: zee-service-dev
   on:
     repo: zalokhan/Django-ServiceWebApp
+
 env:
   global:
     # SECRET_KEY
@@ -37,3 +45,8 @@ env:
     # GOOGLE
     - secure: ilSDPtjZGYobRRGYjgfuIdvaiI6wUlaYTctW5Znsfc06hZfrMgmWaBfxelQPioeVb8012QM69NaAT6mWNokTZ8Oj10QYQepRx2+xmdzPIlboVUhPSPvwYR0dEV6/aHq97KZ5XqksI9MpVbgjAIVzKk54JRY94oOfgdD11o5wYuzrT15S+WCPwAMxp3AJkywYhHY/w0Xh0+ZoA+WSMwiEeZZUQZnuksUsracFGLrUlI8eMEPwaBD1KKbyre8i9pBWZ5Z6J25Lg/8n9WMiNCX/oCA3IHx53NNNp4BgIbDUf1KB7dPWodtkLxcZRhtf28Ywwype9fe+03RgmpTJe6nVfB3JrpIa8tDuda1Ulighok5mDlApw1X+UYk117kblCdmRkssN7Sf6W5paTjnssRVw2yXIOMjr8nJbzr1ibpqwGS1Bmph6X5V6XKjvSdDzG7RbLtGLCuLrVqVKktuTy2IPn2yTpQ8YZXSFZl674wH2cSCsNm5jPVpPm6q5HY0uSkC1gTSY+vp8NKVh3fcEna80MkZNczVJuBWyVNXshM6ghg/YpY8w6kX8Wt9o0UJ0eVHV8YeXS3Bbziel5oypLO7OflWVF9f8cbKzsAEjd4KmCq4JZgX44FUddiI5b/IaSSUGOUyKGrPSzGHZdOzVlQW1Zj4TKkvOFLMzc60MzoolgQ=
     - secure: old9Vk0bMxFtviD1BtICGCi7vjDU8DTXh8kVIVDmF8ATRVOhW7aNCkOkZSDG0Fj5cIGBDtHEj4lbni+UneXvJ/B1ATQqR9OFdduCQ4AUNGuczCJZV7I/AmDM8MCmhD6IZZZ11ll12cMs6zxp6IXsYpRpNWVyAP37zLgDAmIMJ33hiE7rw2tuk35aqDtQ39/NUFSrMZTJZSN1tB5+SARcfo5oUtpZNXP6ixnCJDcNl49XS4BCiIrN5v+BBDrFO87mEi9RbC3iof2zLSslEXhtNpwqI1f0/2RhVSlDzAg1W8oFDxE5N3LnA3K1dC6so9gwQEX2AHIYLW8xnLlJ2i40Dxxj35SszRixxE7r0lcPvTqm9dSD7laAGG5Xiq5Nia4pp5i3ezeDL0ilKneS0+Dd6+Us8FvB31xXV7P9QB/DAkclRpQEN0R8DHU7UbtH239lR2EyiJXwYHwaIbiwfmhCxxZlcjid1wZ3kFgM7/4uB6OIC5qmUYzMJV3xPCQyRaJFH1GqyY5GIC+QpU25sta3D/v6DAVnOrzkoO6aTHd+FzBJPZV/1i1jcl09iiYXYk5AWlBNRws8XhLMg2gTO/3cIkanGDC2sk4F2Ys1lbwV4USw3IvzlIzJWo/XUqjy+OOZV45zv9w3nUSuZ3r3zQY3jNtBTMXKbGXZgUcKmhOgVPw=
+
+notifications:
+  slack:
+    rooms:
+      secure: FO55O+KWRCR/o7m4CqXp4YeGMiqFcfjSAYaaKPk1Xb7RUxpTf6BYX/IS3duStppcNwigYwM0Vp7HcSigzfExStVAZ68I3w5+j+uwTLd1iT5HgxBM+70PPG8jFSRRYvs7ruthfRSPzSdx4Op+OdnjRUkjUVTTQdCWe3EVPMctwrdA5HgJNM3cITmGNf4MCkNUuPBC9j+SeHZDqivnDmiGgYYLHYGh7w3AcJTYzdSVrsS/R4xsstm97uCYs5JbtFMiVySZH+N+m8kHJ6TmS/rlcEkmVRTnfID7yN2vWjH53xThQoW4w/H+5DtCodM2BJnP10CKZFaepZumDT01L5+R+O0S8P95yX8+IVWZSauOsc+rLSfTEgowlBt3ZbichBzzYfECcKDizsoE6YuNw0VFM4VdyPgfciaDdz6+gTzVUI5nFvYflfIqwxN0mL7BpLx4SY9EBGIemK6kQwvwh7ICDaswjem2bEW6PX2VMdKpDkOTe0WLefWyNItkHyjlYa39AxKiIG5+waS6vpI3hiRApXF4nXG7nPvExyO9F9jo1umpPwjJRt2PxRO7F3MG8by4IwX1hHIiEaXgR0z+g707p3iXZONHpn0FBlDC533zvhR9+hOl9vskmCLxTcfP6DHPRr5CQtjAZD6ECX45tP2fAA/GvyIWcM3ZQvNJ2B7hNlE=

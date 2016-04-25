@@ -18,6 +18,16 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 """
 
+"""
+Basic user details:
+userid
+first and last names
+email
+phone
+dob
+account creation date and time
+"""
+
 
 class User(models.Model):
     user_id = models.CharField(max_length=100)
@@ -38,6 +48,11 @@ class User(models.Model):
                        "DOB:" + self.user_dob + "; " + \
                        "CREATE_DATETIME:" + str(self.user_creation_datetime) + "; "
         return model_string
+
+
+"""
+Model for storing Notification or messages
+"""
 
 
 class Message(models.Model):
