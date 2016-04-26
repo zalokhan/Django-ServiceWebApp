@@ -36,9 +36,9 @@ Gives failure alert if unsuccessful
 
 
 def login_check_arena(request):
-    user_id = request.POST['user_id']
+    username = request.POST['username']
     password = request.POST['password']
-    user = authenticate(username=user_id, password=password)
+    user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
             auth_login(request, user)

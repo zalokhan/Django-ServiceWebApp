@@ -31,17 +31,15 @@ Validates the input by the user and checks for duplicates or invalid inputs.
 
 
 def register_check_arena(request):
-    user_id = request.POST['user_id']
+    username = request.POST['username']
     user_first_name = request.POST['user_first_name']
     user_last_name = request.POST['user_last_name']
-    user_email = request.POST['user_email']
     user_phone = request.POST['user_phone']
     user_dob = request.POST['user_dob']
     password = request.POST['password']
     repassword = request.POST['repassword']
 
-    if user_id is None or \
-                    user_email is None or \
+    if username is None or \
                     user_first_name is None or \
                     user_last_name is None or \
                     user_phone is None or \
@@ -55,8 +53,8 @@ def register_check_arena(request):
         return HttpResponseRedirect(reverse('service:register'))
 
     try:
-        db_user = get_object_or_404(UserModel, user_id=user_id)
-    except(Http404):
+        get_object_or_404(UserModel, username=username)
+    except Http404:
         pass
     else:
         message = "User ID already present"
@@ -65,15 +63,14 @@ def register_check_arena(request):
         request.session['alert_type'] = alert_type
         return HttpResponseRedirect(reverse('service:register'))
 
-    auth_user = User.objects.create_user(user_id, user_email, password)
-    user = UserModel(user_id=user_id,
-                     user_email=user_email,
+    User.objects.create_user(username, password)
+    user = UserModel(username=username,
                      user_first_name=user_first_name,
                      user_last_name=user_last_name,
                      user_phone=user_phone,
                      user_dob=user_dob)
     user.save()
-    message = "".join([user_id, " registered successfully"])
+    message = " ".join([user_first_name, user_last_name, "registered successfully"])
     alert_type = "success"
     request.session['alert_message'] = message
     request.session['alert_type'] = alert_type
