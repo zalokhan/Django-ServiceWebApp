@@ -30,8 +30,7 @@ account creation date and time
 
 
 class User(models.Model):
-    user_id = models.CharField(max_length=100)
-    user_email = models.EmailField(max_length=100)
+    username = models.EmailField(max_length=100)
     user_first_name = models.CharField(max_length=50)
     user_last_name = models.CharField(max_length=50)
     user_phone = models.CharField(max_length=20)
@@ -40,8 +39,7 @@ class User(models.Model):
 
     # To print out the model in a readable format
     def __str__(self):
-        model_string = "ID:" + str(self.user_id) + "; " + \
-                       "EMAil:" + self.user_email + "; " + \
+        model_string = "EMAIL:" + self.username + "; " + \
                        "FIRSTNAME:" + self.user_first_name + "; " + \
                        "LASTNAME:" + self.user_last_name + "; " + \
                        "PHONE:" + self.user_phone + "; " + \
@@ -63,7 +61,7 @@ class Message(models.Model):
     message_datetime = models.DateTimeField('message datetime')
 
     def __str__(self):
-        model_string = "RECEIVER:" + self.receiver.user_id + ";" + \
+        model_string = "RECEIVER:" + self.receiver.username + ";" + \
                        "SENDER:" + self.sender + ";" + \
                        "SUBJECT:" + self.message_subject + ";" + \
                        "MESSAGE:" + self.message_body + ";" + \

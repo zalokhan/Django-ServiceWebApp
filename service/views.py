@@ -1,6 +1,6 @@
-from service.arena.main_home_arena import main_home_arena, login_check_arena, logout_arena
-from service.arena.register_arena import register_arena, register_check_arena
-from service.arena.user_home_arena import user_home_main_arena
+from arena.main_home_arena import main_home_arena, login_check_arena, logout_arena
+from arena.register_arena import register_arena, register_check_arena
+from arena.user_home_arena import user_home_main_arena
 
 """
 Main Home Page
